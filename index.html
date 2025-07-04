@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ultimate Typewriter</title>
+  <style>
+    :root {
+      --main-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --text-color: #fff;
+      --border-color: rgba(255, 255, 255, 0.6);
+      --bg-gradient: linear-gradient(-45deg, #1f1c2c, #928dab, #2c3e50, #4ca1af);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      font-family: var(--main-font);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--bg-gradient);
+      background-size: 400% 400%;
+      animation: gradientFlow 12s ease infinite;
+      overflow: hidden;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass-card {
+      padding: 40px 60px;
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: fadeInUp 1.5s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .typewriter-text {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 600;
+      color: var(--text-color);
+      border-right: 3px solid var(--border-color);
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(20) forwards, blink 0.8s step-end infinite;
+      letter-spacing: 1px;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 20ch; } /* Adjust to your string length */
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    @media (max-width: 600px) {
+      .glass-card {
+        padding: 30px 20px;
+      }
+      .typewriter-text {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-card">
+    <div class="typewriter-text">Hello, Ultimate Coder...</div>
+  </div>
+</body>
+</html>
